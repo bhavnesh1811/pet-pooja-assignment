@@ -1,4 +1,5 @@
 import "./App.css";
+import DatePickerContainer from "./components/DatePicker/components/DatePickerContainer";
 import TableContainer from "./components/TableContainer";
 import FormExample from "./components/custom_form/FormExample";
 
@@ -48,6 +49,11 @@ function App() {
       color: "#333333", // Dark gray text
     },
   };
+
+  const handleDateChange = ({ startDate, endDate }) => {
+    console.log("Selected dates:", { startDate, endDate });
+  };
+
   return (
     <div className="App">
       <div
@@ -61,7 +67,30 @@ function App() {
         <h1>Sortable and Filterable Table</h1>
         <TableContainer columns={columns} data={data} styles={customStyles} />
       </div>
-      <FormExample />
+
+      <div
+        style={{
+          maxWidth: "800px",
+          margin: "0 auto",
+          padding: "20px",
+          fontFamily: "Arial, sans-serif",
+        }}
+      >
+        <h1>Form Example</h1>
+        <FormExample />
+      </div>
+
+      <div
+        style={{
+          maxWidth: "800px",
+          margin: "0 auto",
+          padding: "20px",
+          fontFamily: "Arial, sans-serif",
+        }}
+      >
+        <h1>Date Picker</h1>
+        <DatePickerContainer onDateChange={handleDateChange} />
+      </div>
     </div>
   );
 }
